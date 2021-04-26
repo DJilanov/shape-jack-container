@@ -183,7 +183,7 @@
             document.getElementsByTagName('form')[0].appendChild(iframe);
         }, 1000);
     };
-    window.addEventListener('message', event => {
+    window.addEventListener('message', data => {
             console.log('postMessage: ', data);
         if (event.origin.startsWith('https://johsports.alpha.gameaccount.com')) {
             console.log('postMessage come from johsports: ', data);
