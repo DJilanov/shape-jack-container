@@ -175,9 +175,7 @@
 
     setTimeout(() => {
         document.getElementsByClassName('UserMenuTrigger__UserMenuTriggerCss-sc-1d4z067-1')[0].addEventListener("click", window.initLoginForm);
-    }, 1000)
-
-
+    }, 5000)
     window.initLoginForm = () => {
         setTimeout(() => {
             var iframe = document.createElement('iframe');
@@ -185,6 +183,14 @@
             document.getElementsByTagName('form')[0].appendChild(iframe);
         }, 1000);
     };
+    window.addEventListener('message', event => {
+            console.log('postMessage: ', data);
+        if (event.origin.startsWith('https://johsports.alpha.gameaccount.com')) {
+            console.log('postMessage come from johsports: ', data);
+        } else {
+            return; 
+        } 
+    });
 </script>
 
 
