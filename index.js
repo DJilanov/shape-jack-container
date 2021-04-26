@@ -1,14 +1,11 @@
-var http = require('http');
+const express = require('express');
+const app = express();
+const path = require('path');
+const PORT = process.env.PORT || 16200;
 
-var finalhandler = require('finalhandler');
-var serveStatic = require('serve-static');
+app.use('/en/balance/', express.static(path.join(__dirname, 'app')))
+app.use('/en/sports/', express.static(path.join(__dirname, 'app')))
 
-var serve = serveStatic("./");
-
-var server = http.createServer(function(req, res) {
-  var done = finalhandler(req, res);
-  console.log('STARTED');
-  serve(req, res, done);
-});
-
-server.listen(16200);
+app
+	.get('/*', (req, res) => res.sendFile(path.join(__dirname, 'app/index.html')))
+	.listen(PORT, () => console.log(`Listening On Port : ${ PORT }`));
