@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 16200;
 
+app.use('/', express.static(path.join(__dirname, 'app')))
 app.use('/en/balance/', express.static(path.join(__dirname, 'app')))
 app.use('/en/sports/', express.static(path.join(__dirname, 'app')))
 
